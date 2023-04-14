@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'SVN Athena', sans-serif;
+}
+
+.banner {
+    background-color: transparent;
+    background-image: url(../Pictures/trang-chu/banner.png);
+    background-size: cover;
+    padding-bottom: 30%;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (min-width: 600px) {
+    .banner {
+        background-image: url(../Pictures/trang-chu/banner.png);
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .banner {
+        background-image: url(../Pictures/trang-chu/banner.png);
+    }
+}
+.banner_footer {
+    background-color: transparent;
+    background-image: url(../Pictures/trang-chu/fotter.png);
+    background-size: cover;
+    padding-bottom: 10%;
+    /* padding-top: 10%; */
+    padding-right: 1%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (min-width: 600px) {
+    .banner_footer {
+        background-image: url(../Pictures/trang-chu/fotter.png);
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .banner_footer {
+        background-image: url(../Pictures/trang-chu/fotter.png);
+    }
+}
