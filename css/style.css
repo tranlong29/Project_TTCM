@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'SVN Athena', sans-serif;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+.banner {
+    background-color: transparent;
+    background-image: url(../Pictures/trang-chu/banner.png);
+    background-size: cover;
+    padding-bottom: 30%;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    object-fit: cover;
+    object-position: center;
+}
+.banner_footer {
+    background-color: transparent;
+    background-image: url(../Pictures/trang-chu/fotter.png);
+    background-size: cover;
+    padding-left: 10%;
+    padding-right: 10%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner_about{
+    background-color: transparent;
+    background-image: url(../Pictures/lien-he/banner.jpg);
+    background-size: cover;
+    padding-bottom: 20%;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    object-fit: cover;
+    object-position: center;
+}
+.banner_tintuc{
+    background-color: transparent;
+    background-image: url(../Pictures/tin-tuc/background-tintuc.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 69%; 
+    padding-left: 0%;
+    padding: auto;
+    padding-bottom: 0%;
+}
+.banner_gioithieu {
+    background-color: transparent;
+    background-image: url(../Pictures/gioi-thieu/banner.jpg);
+    background-size: cover;
+    padding-bottom: 30%;
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    object-fit: cover;
+    object-position: center;
+}
+.banner_gioithieu1 {
+    background-color: transparent;
+    background-image: url(../Pictures/gioi-thieu/banner02.jpg);
+    background-size: cover; 
+    object-fit: cover;
+    object-position: center;
+}
+.banner_baiviet{
+    background-color: transparent;
+    background-image: url(/Project_TTCM-master/Pictures/bai-viet/background.jpg);
+    background-size: cover; 
+    object-fit: cover;
+    object-position: center;
+}
+.font_tintuc
+{
+    font-family: ExampleFont;
+    font-style: italic;
+    width: 19rem;
+}
+.font_tintuc1
+{
+    font-family: glyphicons-halflings-regular;
+    font-size:smaller;
+}
+.font_tieude{
+    font-family: 'Abril Fatface', serif;
+    font-size: 46px; 
+  }
+  
+input[type=text ],input[name="message"], input[type=email ],input[type=web ] {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid rgb(100, 109, 14);
+    border-radius: 0px;
+    width: 25rem;
+    font-size: small;
+  }
+  button[type=submit],button[type=submit]:hover {
+    padding: 7px 30px;
+    background-color: rgb(100, 109, 14);
+    border-radius: 0px; 
+  }
+
+  
+@media screen and (min-width: 600px) {
+    .banner {
+        background-image: url(../Pictures/trang-chu/banner.png);
+    }
+    .banner_about {
+        background-image: url(../Pictures/lien-he/banner.jpg);
+    }
+    .banner_baiviet {
+        background-image: url(/Project_TTCM-master/Pictures/bai-viet/background.jpg);
+    }
+    .banner_footer {
+        background-image: url(../Pictures/trang-chu/fotter.png);
+    }
+    .banner_gioithieu {
+        background-image: url(../Pictures/gioi-thieu/banner.jpg);
+    }
+    .banner_gioithieu1 {
+        background-image: url(../Pictures/gioi-thieu/banner02.jpg);
+    }
+    .banner_tintuc{
+        background-image: url(../Pictures/tin-tuc/background-tintuc.png);
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .banner {
+        background-image: url(../Pictures/trang-chu/banner.png);
+    }
+    .banner_about {
+        background-image: url(../Pictures/lien-he/banner.jpg);
+    }
+    .banner_baiviet {
+        background-image: url(/Project_TTCM-master/Pictures/bai-viet/background.jpg);
+    }
+    .banner_footer {
+        background-image: url(../Pictures/trang-chu/fotter.png);
+    }
+    .banner_gioithieu {
+        background-image: url(../Pictures/gioi-thieu/banner.jpg);
+    }
+    .banner_gioithieu1 {
+        background-image: url(../Pictures/gioi-thieu/banner02.jpg);
+    }
+    .banner_tintuc{
+        background-image: url(../Pictures/tin-tuc/background-tintuc.png);
+    }
+}
+@font-face {
+	font-family:ExampleFont;
+	src:url(/Project_TTCM-master/fonts/fontawesome-webfont.eot) format('woff'),url(/Project_TTCM-master/fonts/fontawesome-webfont.eot) format('eot');
+	font-family: glyphicons-halflings-regular;
+    src:url(/Project_TTCM-master/fonts/glyphicons-halflings-regular.eot) format('woff'),url(/Project_TTCM-master/fonts/glyphicons-halflings-regular.eot) format('eot');
+    font-weight:400;
+	font-style:normal;
+	font-display: fallback;
+}
