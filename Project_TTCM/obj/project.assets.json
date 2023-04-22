@@ -6244,11 +6244,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Long\\Project_TTCM\\Project_TTCM.csproj",
+      "projectUniqueName": "D:\\Long\\ko\\Project_TTCM\\Project_TTCM.csproj",
       "projectName": "Project_TTCM",
-      "projectPath": "D:\\Long\\Project_TTCM\\Project_TTCM.csproj",
+      "projectPath": "D:\\Long\\ko\\Project_TTCM\\Project_TTCM.csproj",
       "packagesPath": "C:\\Users\\Hieu Tran\\.nuget\\packages\\",
-      "outputPath": "D:\\Long\\Project_TTCM\\obj\\",
+      "outputPath": "D:\\Long\\ko\\Project_TTCM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Hieu Tran\\AppData\\Roaming\\NuGet\\NuGet.Config",

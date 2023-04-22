@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "umoPIoAUurPEO0mhbr/VhMd1zPKCKJlc68qxcm/PHg2HWsFgWcwVbU2ga7nz667cAdnh5lPXg4FvJ+xWvi63/Q==",
+  "dgSpecHash": "VXcH7X57AYmUJWbW2WvJ1OpTOyhNjnSPk5FTB9sA+woysfmazHEBqKAuXV11NMt+J2F2U7d9Tn7/75BDD8pV9A==",
   "success": true,
-  "projectFilePath": "D:\\Long\\Project_TTCM\\Project_TTCM.csproj",
+  "projectFilePath": "D:\\Long\\ko\\Project_TTCM\\Project_TTCM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hieu Tran\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Hieu Tran\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

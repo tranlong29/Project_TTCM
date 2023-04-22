@@ -6,12 +6,14 @@ namespace Project_TTCM.Datas
 {
     public class Orders
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [MaxLength(10)]
         
         public char IdOrder  { get; set; }
         [Required]
-        public DateTime Order { get; set; } = DateTime.Now;
+        public DateTime Orderdate { get; set; } = DateTime.Now;
 
         public int? IdCustomer { get; set; }
         [ForeignKey("IdCustomer")]

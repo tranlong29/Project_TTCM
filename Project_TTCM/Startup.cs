@@ -28,7 +28,11 @@ namespace Project_TTCM
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_TTCM", Version = "v1" });
+            });
             services.AddControllers();
             services.AddDbContext<MyDBContext>(option =>
             {
@@ -40,6 +44,14 @@ namespace Project_TTCM
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "Project_TTCM v1"));
+            }
+
 
             app.UseHttpsRedirection();
 

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_TTCM.Datas
 {
     public class Customer
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [MaxLength(250)]
@@ -22,9 +24,10 @@ namespace Project_TTCM.Datas
         public string Phone { get; set; }
         [Required, MaxLength(150)]
         public string Address { get; set; }
-        public DateTime Created_Date  { get; set; }
+        public DateTime Created_Date  { get; set; } = DateTime.Now;
         public byte IsDelete { get; set; } = 0;
         public byte IsAction { get; set; } = 1;
+        public byte Admin { get; set;}
 
 
 

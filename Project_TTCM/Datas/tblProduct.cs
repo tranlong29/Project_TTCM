@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,7 +8,8 @@ namespace Project_TTCM.Datas
     public class tblProduct
     {
         [Key]
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
@@ -40,10 +42,12 @@ namespace Project_TTCM.Datas
         [Required]
         [MaxLength(500)]
         public string META_KEYWORD { get; set; }
-        public DateTime CREATED_DATE { get; set; }
+        public DateTime CREATED_DATE { get; set; }=DateTime.Now;
         public int CREATED_BY { get; set; }
-        public byte ISDELETE { get; set; } = 0;
-        public byte ISACTIVE { get; set; } = 1;
+        [DefaultValue(0)]
+        public byte ISDELETE { get; set; }
+        [DefaultValue(1)]
+        public byte ISACTIVE { get; set; }
 
     }
 }
