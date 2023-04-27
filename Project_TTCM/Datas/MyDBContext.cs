@@ -6,6 +6,7 @@ namespace Project_TTCM.Datas
     {
         public MyDBContext(DbContextOptions options):base(options) { }
 
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<tblProduct> Products { get; set; }
         public DbSet<Configuration> Configurations { get; set; }

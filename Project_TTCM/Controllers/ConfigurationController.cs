@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
@@ -16,12 +17,14 @@ namespace Project_TTCM.Controllers
         public ConfigurationController(MyDBContext context) { 
             _context = context;
         }
+        [Authorize]
         [HttpGet]
         public IActionResult GetALl()
         {
             var listConfg = _context.Configurations.ToList();
             return Ok(listConfg);
         }
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -34,6 +37,7 @@ namespace Project_TTCM.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult CreateConfg( ConfigurationModel configurationModel)
         {
             try
@@ -55,6 +59,7 @@ namespace Project_TTCM.Controllers
             }
         }
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult PutById(int id, ConfigurationModel configurationModel)
         {
             try
@@ -76,6 +81,7 @@ namespace Project_TTCM.Controllers
 
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
+using System;
 using System.Linq;
 using System.Net;
 
 namespace Project_TTCM.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
@@ -41,7 +44,7 @@ namespace Project_TTCM.Controllers
                 var order = new Orders
                 {
                     IdOrder = orderDTO.IdOrder,
-                    Orderdate = orderDTO.Orderdate,
+                    Orderdate = DateTime.Now,
                     IdCustomer = orderDTO.IdCustomer,
                     Total_Money = orderDTO.Total_Money,
                     Notes = orderDTO.Notes,

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,9 +25,12 @@ namespace Project_TTCM.Datas
         public string Phone { get; set; }
         [Required, MaxLength(150)]
         public string Address { get; set; }
-        public DateTime Created_Date  { get; set; } = DateTime.Now;
-        public byte IsDelete { get; set; } = 0;
-        public byte IsAction { get; set; } = 1;
+        public DateTime Created_Date  { get; set; }
+        [DefaultValue(0)]
+        public byte IsDelete { get; set; }
+        [DefaultValue(1)]
+        public byte IsAction { get; set; }
+        [DefaultValue(0)]
         public byte Admin { get; set;}
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +14,7 @@ namespace Project_TTCM.Datas
         
         public char IdOrder  { get; set; }
         [Required]
-        public DateTime Orderdate { get; set; } = DateTime.Now;
+        public DateTime Orderdate { get; set; }
 
         public int? IdCustomer { get; set; }
         [ForeignKey("IdCustomer")]
@@ -29,7 +30,9 @@ namespace Project_TTCM.Datas
         public string Email { get; set; }
         [Required, MaxLength(50)]
         public string Phone { get; set; }
-        public byte IsDelete { get; set; } = 0;
-        public byte IsAction { get; set; } = 1;
+        [DefaultValue(0)]
+        public byte IsDelete { get; set; }
+        [DefaultValue(1)]
+        public byte IsAction { get; set; }
     }
 }

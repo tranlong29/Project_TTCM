@@ -6,9 +6,11 @@ using System;
 using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Project_TTCM.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -55,7 +57,7 @@ namespace Project_TTCM.Controllers
                     META_TITLE = productModel.META_TITLE,
                     META_DESCRIPTION = productModel.META_DESCRIPTION,
                     META_KEYWORD = productModel.META_KEYWORD,
-                    CREATED_DATE = productModel.CREATED_DATE,
+                    CREATED_DATE = DateTime.Now,
                     CREATED_BY = productModel.CREATED_BY,
                     ISDELETE = productModel.ISDELETE,
                     ISACTIVE = productModel.ISACTIVE,

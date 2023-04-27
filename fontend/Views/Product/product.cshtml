@@ -1,0 +1,617 @@
+﻿
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="banner_SanPham">
+    <div class="col-12 d-flex justify-content-center fw-bold">
+        <h1>SẢN PHẨM</h1>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <div class="content_top">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="text-dark" href="#">Trang Chủ</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Sản Phẩm</li>
+            </ol>
+        </nav>
+        <div class="col-12 fw-bold">
+            <h2>Sản phẩm</h2>
+        </div>
+    </div>
+
+    <div class="progress" role="progressbar" style="height: 1px">
+        <div class="progress-bar text-bg-secondary" style="width: 100%"></div>
+    </div>
+
+    <div class="mt-2 col-12 d-flex justify-content-between">
+        <span class="mt-2 text-body-tertiary col-10 ">Bộ lọc sản phẩm</span>
+        <select class="col-1.5 text-body-tertiary">
+            <option selected>Thứ tự mặc định</option>
+            <option value="1">Giá thấp đến cao</option>
+            <option value="2">Giá cao đến thấp</option>
+            <option value="3">Xếp theo đánh giá</option>
+            <option value="4">Xếp theo phổ biến</option>
+        </select>
+    </div>
+
+    <div class="content_end mt-3 col-12 d-flex">
+        <div class="col-3">
+            <div class="loaisanpham">
+                <h5 class="mb-4 ms-2">Loại sản phẩm</h5>
+
+                <div class="form">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà xanh Thái Nguyên
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà Oolong
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà Shan tuyết
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà sen
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà lài
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà thảo dược
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Dụng cụ pha trà
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Nước pha trà
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="giathanh mt-4">
+                <div class="slider">
+                    <h5 class="ms-2">Giá thành</h5>
+                    <div class="range-slider">
+                        <input value="1000"
+                               min="1000"
+                               max="50000"
+                               step="500"
+                               type="range" />
+                        <input value="50000"
+                               min="1000"
+                               max="50000"
+                               step="500"
+                               type="range" />
+                        <span class="rangeValues"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thuonghieu">
+                <h5 class="mb-4 ms-2">Thương hiệu</h5>
+                <div class="form">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà Tân Cương Xanh
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà Sen Tây Hồ
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               value=""
+                               id="" />
+                        <label class="form-check-label text-secondary" for="">
+                            Trà Lộc Tân
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <!-------------- sản phẩm 1 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 2 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 3 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 4 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 5 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 6 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 7 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 8 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 9 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-------------- sản phẩm 10 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 11 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-------------- sản phẩm 12 ----------------->
+                <div class="col">
+                    <div class="card border-0 h-100">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ratings col-9 starColor">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star rating-color"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="text-dark">(17)</i>
+                            </div>
+                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
+                                News
+                            </h5>
+                        </div>
+                        <img src="../home/Pictures/san-pham/sanpham1.png"
+                             class="card-img-top"
+                             alt="product1" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trà Shan Tuyết</h5>
+                            <div class="d-flex justify-content-center">
+                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
+                                    50,000<span class="fs-6">VND</span>
+                                </p>
+                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
+                                    <option selected>100g</option>
+                                    <option value="1">200g</option>
+                                    <option value="2">300g</option>
+                                    <option value="3">400g</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="btn-toolbar mb-3 d-flex justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group me-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-outline-secondary ms-2">1</button>
+                    <button type="button" class="btn btn-outline-secondary ms-2">2</button>
+                    <button type="button" class="btn btn-outline-secondary ms-2">3</button>
+                    <button type="button" class="btn btn-outline-secondary ms-2">4</button>
+                    <button type="button" class="btn btn-outline-secondary ms-2">></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

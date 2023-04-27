@@ -42,7 +42,7 @@ namespace Project_TTCM.Datas
         [Required]
         [MaxLength(500)]
         public string META_KEYWORD { get; set; }
-        public DateTime CREATED_DATE { get; set; }=DateTime.Now;
+        public DateTime CREATED_DATE { get; set; }
         public int CREATED_BY { get; set; }
         [DefaultValue(0)]
         public byte ISDELETE { get; set; }

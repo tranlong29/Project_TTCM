@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
@@ -6,6 +7,7 @@ using System.Linq;
 
 namespace Project_TTCM.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderDetailController : ControllerBase

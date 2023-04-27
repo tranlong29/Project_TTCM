@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
@@ -10,6 +11,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace Project_TTCM.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
@@ -23,7 +25,7 @@ namespace Project_TTCM.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var ListCustomer = _context.Orders_Details.ToList();
+            var ListCustomer = _context.Customers.ToList();
             return Ok(ListCustomer);
         }
         [HttpGet("{id}")]
@@ -79,7 +81,7 @@ namespace Project_TTCM.Controllers
                 customer.Email = customerDTO.Email;
                 customer.Phone = customerDTO.Phone;
                 customer.Address = customerDTO.Address;
-                customer.Created_Date = DateTime.Now;
+                customer.Created_Date = customerDTO.Created_Date;
                 customer.IsAction = customerDTO.IsAction;
                 customer.Admin = customerDTO.Admin;
 

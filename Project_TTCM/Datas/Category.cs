@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,10 +30,12 @@ namespace Project_TTCM.Datas
         [Required]
         [MaxLength(500)]
         public string META_KEYWORD { get; set; }
-        public DateTime CREATED_DATE { get; set; } = DateTime.Now;
+        public DateTime CREATED_DATE { get; set; }
         public int CREATED_BY { get; set; }
-        public byte ISDELETE { get; set; } = 0;
-        public byte ISACTIVE { get; set; } = 1;
+        [DefaultValue(0)]
+        public byte ISDELETE { get; set; }
+        [DefaultValue(1)]
+        public byte ISACTIVE { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +14,9 @@ namespace Project_TTCM.Datas
         [MaxLength(100)]
         public string Name { get; set; }
         public string Notes { get; set; }
-        public byte ISDELETE { get; set; } = 0;
-        public byte ISACTIVE { get; set; } = 1;
+        [DefaultValue(0)]
+        public byte ISDELETE { get; set; }
+        [DefaultValue(1)]
+        public byte ISACTIVE { get; set; }
     }
 }

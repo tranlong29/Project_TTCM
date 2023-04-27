@@ -298,6 +298,40 @@ namespace Project_TTCM.Migrations
                     b.ToTable("Product_Images");
                 });
 
+            modelBuilder.Entity("Project_TTCM.Datas.RefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ExpireAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdUser")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssuedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("JwtId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdUser");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("Project_TTCM.Datas.tblProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -431,6 +465,17 @@ namespace Project_TTCM.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Project_TTCM.Datas.RefreshToken", b =>
+                {
+                    b.HasOne("Project_TTCM.Datas.Customer", "customer")
+                        .WithMany()
+                        .HasForeignKey("IdUser")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("customer");
                 });
 
             modelBuilder.Entity("Project_TTCM.Datas.tblProduct", b =>

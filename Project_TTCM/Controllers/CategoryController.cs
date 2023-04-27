@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
+using System;
 using System.Linq;
 
 namespace Project_TTCM.Controllers
@@ -16,12 +18,14 @@ namespace Project_TTCM.Controllers
         {
             _context = context;
         }
+        [Authorize]
         [HttpGet]
         public IActionResult GetALl()
         {
             var listCategory = _context.Categories.ToList();
             return Ok(listCategory);
         }
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id) 
         {
@@ -32,9 +36,9 @@ namespace Project_TTCM.Controllers
             }
             return Ok(Category);
         }
-
+        [Authorize]
         [HttpPost]
-        public IActionResult CreateCategory (CategoryModel categoryModel)
+        public IActionResult CreateCategory(CategoryModel categoryModel)
         {
             try
             {
@@ -47,7 +51,7 @@ namespace Project_TTCM.Controllers
                     META_TITLE = categoryModel.META_TITLE,
                     META_DESCRIPTION = categoryModel.META_DESCRIPTION,
                     META_KEYWORD = categoryModel.META_KEYWORD,
-                    CREATED_DATE = categoryModel.CREATED_DATE,
+                    CREATED_DATE = DateTime.Now,
                     CREATED_BY = categoryModel.CREATED_BY,
                     ISDELETE = categoryModel.ISDELETE,
                     ISACTIVE = categoryModel.ISACTIVE,
@@ -62,6 +66,7 @@ namespace Project_TTCM.Controllers
                 return BadRequest();
             }
         }
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult PutById(int id, CategoryModel categoryModel) {
             try
@@ -89,6 +94,7 @@ namespace Project_TTCM.Controllers
 
 
         }
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
