@@ -8,7 +8,6 @@ namespace Project_TTCM.Models
     public class OrderDTO
     {
         public char IdOrder { get; set; }
-        public DateTime Orderdate { get; set; } = DateTime.Now;
         public int? IdCustomer { get; set; }
         public decimal Total_Money { get; set; }
         public string Notes { get; set; }

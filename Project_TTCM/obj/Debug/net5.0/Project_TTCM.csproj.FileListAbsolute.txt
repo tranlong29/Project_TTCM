@@ -188,3 +188,8 @@ D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\Project_TTCM.pdb
 D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\Project_TTCM.genruntimeconfig.cache
 D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\ref\Project_TTCM.dll
 D:\years3_2\api\Project_TTCM\Project_TTCM\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\staticwebassets\Project_TTCM.StaticWebAssets.Pack.cache
+D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\staticwebassets\msbuild.Project_TTCM.Microsoft.AspNetCore.StaticWebAssets.props
+D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\staticwebassets\msbuild.build.Project_TTCM.props
+D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.Project_TTCM.props
+D:\years3_2\api\Project_TTCM\Project_TTCM\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.Project_TTCM.props

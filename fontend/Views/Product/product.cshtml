@@ -1,616 +1,366 @@
-﻿
+﻿@model fontend.Models.Product
 @{
     ViewData["Title"] = "product";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<div class="banner_SanPham">
-    <div class="col-12 d-flex justify-content-center fw-bold">
-        <h1>SẢN PHẨM</h1>
-    </div>
-</div>
-
-<div class="container mt-3">
-    <div class="content_top">
-        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a class="text-dark" href="#">Trang Chủ</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Sản Phẩm</li>
-            </ol>
-        </nav>
-        <div class="col-12 fw-bold">
-            <h2>Sản phẩm</h2>
+<div class="content_chitiet">
+    <div class="container">
+        <div class="directional">
+            <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a class="text-dark" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="text-dark" asp-controller="Product" asp-action="products">Sản Phẩm</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Chi tiết sản phẩm
+                    </li>
+                </ol>
+            </nav>
         </div>
-    </div>
 
-    <div class="progress" role="progressbar" style="height: 1px">
-        <div class="progress-bar text-bg-secondary" style="width: 100%"></div>
-    </div>
+        <div class="detail col-12 d-flex">
+            <div class="img-detail col-6 d-flex">
+                <div class="col-2 me-5 text-center">
+                    <div class="carousel">
+                        <button class="carousel mb-1 carousel border border-0 rounded-circle"
+                                type="button"
+                                data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="prev">
+                            <img class="rotateImg"
+                                 src="~/home/Pictures/trang-chu/backButton.png" />
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        @if (ViewBag.ArrListStr != null)
+                        {
+                            int i = 0;
+                            foreach (var item in ViewBag.ArrListStr)
+                            {
+                                <button type="button"
+                                        data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="@i"
+                                        class="active border border-0"
+                                        aria-current="true"
+                                        aria-label="Slide @(i+1)">
+                                    <img src="@ViewBag.Domain@item"
+                                         class="d-block w-100"
+                                         alt="..." />
+                                </button>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <button type="button"
+                                    data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="0"
+                                    aria-label="Slide 1"
+                                    class="border border-0">
+                                <img src="~/home/Pictures/chitietsanpham/img-1.jpg"
+                                     class="d-block w-100"
+                                     alt="..." />
+                            </button>
+                            <button type="button"
+                                    data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="1"
+                                    aria-label="Slide 2"
+                                    class="border border-0">
+                                <img src="~/home/Pictures/chitietsanpham/img-2.jpg"
+                                     class="d-block w-100"
+                                     alt="..." />
+                            </button>
+                            <button type="button"
+                                    data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="2"
+                                    aria-label="Slide 3"
+                                    class="border border-0">
+                                <img src="~/home/Pictures/chitietsanpham/img-3.jpg"
+                                     class="d-block w-100"
+                                     alt="..." />
+                            </button>
+                        }
 
-    <div class="mt-2 col-12 d-flex justify-content-between">
-        <span class="mt-2 text-body-tertiary col-10 ">Bộ lọc sản phẩm</span>
-        <select class="col-1.5 text-body-tertiary">
-            <option selected>Thứ tự mặc định</option>
-            <option value="1">Giá thấp đến cao</option>
-            <option value="2">Giá cao đến thấp</option>
-            <option value="3">Xếp theo đánh giá</option>
-            <option value="4">Xếp theo phổ biến</option>
-        </select>
-    </div>
+                        <button class="carousel border border-0 rounded-circle"
+                                type="button"
+                                data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="next">
+                            <img class="rotateImg"
+                                 src="~/home/Pictures/trang-chu/nextButton.png" />
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide col-9">
+                    <div class="carousel-inner">
 
-    <div class="content_end mt-3 col-12 d-flex">
-        <div class="col-3">
-            <div class="loaisanpham">
-                <h5 class="mb-4 ms-2">Loại sản phẩm</h5>
+                        @if (ViewBag.ArrListStr != null)
+                        {
+                            int count = 0;
+                            @foreach (var item in ViewBag.ArrListStr)
+                            {
+                                <div class="carousel-item @(count == 0 ? "active" : "") w-70">
+                                    <img src="@ViewBag.Domain@item" class="d-block w-100 img-fluid" alt="...">
+                                </div>
+                                count++;
+                            }
+                        }
+                        else
+                        {
+                            <div class="carousel-item active w-70">
+                                <img src="~/home/Pictures/chitietsanpham/img-1.jpg"
+                                     class="d-block w-100 img-fluid"
+                                     alt="..." />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/home/Pictures/chitietsanpham/img-2.jpg"
+                                     class="d-block w-100 img-fluid"
+                                     alt="..." />
+                            </div>
+                            <div class="carousel-item">
+                                <img src="~/home/Pictures/chitietsanpham/img-3.jpg"
+                                     class="d-block w-100 img-fluid"
+                                     alt="..." />
+                            </div>
+                        }
 
-                <div class="form">
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà xanh Thái Nguyên
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà Oolong
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà Shan tuyết
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà sen
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà lài
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà thảo dược
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Dụng cụ pha trà
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Nước pha trà
-                        </label>
+
+
+
                     </div>
                 </div>
             </div>
 
-            <div class="giathanh mt-4">
-                <div class="slider">
-                    <h5 class="ms-2">Giá thành</h5>
-                    <div class="range-slider">
-                        <input value="1000"
-                               min="1000"
-                               max="50000"
-                               step="500"
-                               type="range" />
-                        <input value="50000"
-                               min="1000"
-                               max="50000"
-                               step="500"
-                               type="range" />
-                        <span class="rangeValues"></span>
-                    </div>
-                </div>
-            </div>
+            <div class="col-2"></div>
 
-            <div class="thuonghieu">
-                <h5 class="mb-4 ms-2">Thương hiệu</h5>
-                <div class="form">
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà Tân Cương Xanh
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà Sen Tây Hồ
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input"
-                               type="checkbox"
-                               value=""
-                               id="" />
-                        <label class="form-check-label text-secondary" for="">
-                            Trà Lộc Tân
-                        </label>
-                    </div>
+            <div class="col-4">
+                <h1>@Model.Name</h1>
+                <div class="ratings col-9 starColor mt-3">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star rating-color"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="text-dark">(17) đánh giá</i>
                 </div>
+                <div class="d-flex mt-1">
+                    <p class="card-text me-3 fs-3 fw-semibold mt-2">
+                        @Model.Price<span class="fs-6">VND</span>
+                    </p>
+                    <select class="weightTea mt-3 ms-5 col-3 text-body-tertiary border border-0">
+                        <option selected>100g</option>
+                        <option value="1">200g</option>
+                        <option value="2">300g</option>
+                        <option value="3">400g</option>
+                    </select>
+                </div>
+                <p class="text-uppercase fs-6 fw-semibold">
+                    @Model.Notes
+                </p>
+
+                <p class="col-12 fs-6">
+                    @Model.Description
+                </p>
             </div>
         </div>
 
-        <div class="col-9">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <!-------------- sản phẩm 1 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 2 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 3 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 4 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 5 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 6 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 7 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 8 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 9 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-------------- sản phẩm 10 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 11 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-------------- sản phẩm 12 ----------------->
-                <div class="col">
-                    <div class="card border-0 h-100">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="ratings col-9 starColor">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star rating-color"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="text-dark">(17)</i>
-                            </div>
-                            <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-2 text-center">
-                                News
-                            </h5>
-                        </div>
-                        <img src="../home/Pictures/san-pham/sanpham1.png"
-                             class="card-img-top"
-                             alt="product1" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Trà Shan Tuyết</h5>
-                            <div class="d-flex justify-content-center">
-                                <p class="card-text me-3 fs-5 fw-semibold mt-2">
-                                    50,000<span class="fs-6">VND</span>
-                                </p>
-                                <select class="weightTea mt-2 col-3 text-body-tertiary border border-0">
-                                    <option selected>100g</option>
-                                    <option value="1">200g</option>
-                                    <option value="2">300g</option>
-                                    <option value="3">400g</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+        <div class="container instructions d-flex justify-content-center">
+            <div class="col-3 align-self-center">
+                <h2>Hướng đẫn Pha Trà Shan Tuyết</h2>
+                <p>đổ vào ấm từ 150-200ml, nước sôi nhiệt độ 85°C</p>
+                <p>1 - 2 nắm trà, khoảng 20 - 30gram</p>
+                <p>Để trà: 4 - 6 phút</p>
             </div>
-
-            <div class="btn-toolbar mb-3 d-flex justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-outline-secondary ms-2">1</button>
-                    <button type="button" class="btn btn-outline-secondary ms-2">2</button>
-                    <button type="button" class="btn btn-outline-secondary ms-2">3</button>
-                    <button type="button" class="btn btn-outline-secondary ms-2">4</button>
-                    <button type="button" class="btn btn-outline-secondary ms-2">></button>
-                </div>
+            <div class="col-6 align-self-center">
+                <img src="~/home/Pictures/chitietsanpham/phatra.jpg" alt="" />
             </div>
+        </div>
 
+        <div class="col-12 d-flex justify-content-center fw-bold">
+            <h1>SẢN PHẨM LIÊN QUAN</h1>
+        </div>
+        <div class="col-11 mt-5 text-center">
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner ms-5">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            @foreach (var item in ViewBag.prodct)
+                            {
+                                if (item.Id <= 4)
+                                {
+                                    <div class="col-2 me-5">
+                                        <div class="card border-0 h-100">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings col-9 text starColor">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="text-dark sli">(17)</i>
+                                                </div>
+                                                <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-3 text-center">
+                                                    New
+                                                </h5>
+                                            </div>
+                                            <img src="@ViewBag.Domain@item.Images"
+                                                 class="card-img-top"
+                                                 alt="product1" />
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">
+                                                    <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                        @item.Name
+                                                    </a>
+                                                </h5>
+                                                <div class="d-flex justify-content-center">
+                                                    <p class="card-text me-3 fs-6 fw-semibold mt-2">
+                                                        @item.Price<span class="fs-6">VND</span>
+                                                    </p>
+                                                    <select class="weightTea mt-2 col-4 text-body-tertiary border border-0">
+                                                        <option selected>100g</option>
+                                                        <option value="1">200g</option>
+                                                        <option value="2">300g</option>
+                                                        <option value="3">400g</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    break;
+                                }
+
+                            }
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            @foreach (var item in ViewBag.prodct)
+                            {
+                                if (item.Id > 4 && item.Id <= 8)
+                                {
+                                    <div class="col-2 me-5">
+                                        <div class="card border-0 h-100">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings col-9 text starColor">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="text-dark sli">(17)</i>
+                                                </div>
+                                                <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-3 text-center">
+                                                    New
+                                                </h5>
+                                            </div>
+                                            <img src="@ViewBag.Domain@item.Images"
+                                                 class="card-img-top"
+                                                 alt="product1" />
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">
+                                                    <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                        @item.Name
+                                                    </a>
+                                                </h5>
+                                                <div class="d-flex justify-content-center">
+                                                    <p class="card-text me-3 fs-6 fw-semibold mt-2">
+                                                        @item.Price<span class="fs-6">VND</span>
+                                                    </p>
+                                                    <select class="weightTea mt-2 col-4 text-body-tertiary border border-0">
+                                                        <option selected>100g</option>
+                                                        <option value="1">200g</option>
+                                                        <option value="2">300g</option>
+                                                        <option value="3">400g</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.Id > 8)
+                                {
+                                    break;
+                                }
+
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            @foreach (var item in ViewBag.prodct)
+                            {
+                                if (item.Id > 8 && item.Id <= 12)
+                                {
+                                    <div class="col-2 me-5">
+                                        <div class="card border-0 h-100">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="ratings col-9 text starColor">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star rating-color"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="text-dark sli">(17)</i>
+                                                </div>
+                                                <h5 class="newsColor mt-1 me-1 fs-6 py-1 col-3 text-center">
+                                                    New
+                                                </h5>
+                                            </div>
+                                            <img src="@ViewBag.Domain@item.Images"
+                                                 class="card-img-top"
+                                                 alt="product1" />
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">
+                                                    <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                        @item.Name
+                                                    </a>
+                                                </h5>
+                                                <div class="d-flex justify-content-center">
+                                                    <p class="card-text me-3 fs-6 fw-semibold mt-2">
+                                                        @item.Price<span class="fs-6">VND</span>
+                                                    </p>
+                                                    <select class="weightTea mt-2 col-4 text-body-tertiary border border-0">
+                                                        <option selected>100g</option>
+                                                        <option value="1">200g</option>
+                                                        <option value="2">300g</option>
+                                                        <option value="3">400g</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev ms-5"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                    <img aria-hidden="true"
+                         src="~/home/Pictures/trang-chu/backButton.png" />
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next ms-5"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                    <img src="~/home/Pictures/trang-chu/nextButton.png" />
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

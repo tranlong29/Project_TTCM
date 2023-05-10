@@ -28,7 +28,7 @@ namespace Project_TTCM.Controllers
             _configuration = configuration;
         }
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        public IActionResult Login(LoginDTO loginDTO)
         {
             if (loginDTO != null && loginDTO.Username != null && loginDTO.Password != null)
             {
@@ -53,7 +53,7 @@ namespace Project_TTCM.Controllers
                             _configuration["AppSettings:Issuer"],
                             _configuration["AppSettings:Audience"],
                             claims,
-                            expires:DateTime.Now.AddDays(2),
+                            expires: DateTime.Now.AddDays(2),
                             signingCredentials: signIn
                         );
                     return Ok(new JwtSecurityTokenHandler().WriteToken(token));
@@ -64,7 +64,7 @@ namespace Project_TTCM.Controllers
                 }
 
 
-                
+
             }
             else
             {
@@ -74,7 +74,7 @@ namespace Project_TTCM.Controllers
         }
 
         [HttpPost("loginAmin")]
-        public async Task<IActionResult> Admin(LoginDTO loginDTO)
+        public IActionResult Admin(LoginDTO loginDTO)
         {
             if (loginDTO != null && loginDTO.Username != null && loginDTO.Password != null)
             {
@@ -115,6 +115,37 @@ namespace Project_TTCM.Controllers
             else
             {
                 return BadRequest();
+            }
+
+        }
+        [HttpPost("Register")]
+        public IActionResult CreateUser(Register register)
+        {
+            var username = _context.Customers.FirstOrDefault(p => p.Username == register.Username);
+            if (username != null)
+            {
+                
+                return BadRequest("UserName đã tồn tại!!!");
+            }
+            else
+            {
+                try
+                {
+                    var User = new Customer
+                    {
+                        Username = register.Username,
+                        Password = register.Password,
+                        Email = register.Email,
+                        Phone = register.Phone,
+                    };
+                    _context.Add(User);
+                    _context.SaveChanges();
+                    return Ok(User);
+                }
+                catch
+                {
+                    return BadRequest();
+                }
             }
 
         }

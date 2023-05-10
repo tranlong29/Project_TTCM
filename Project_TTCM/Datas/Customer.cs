@@ -10,7 +10,6 @@ namespace Project_TTCM.Datas
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
         [MaxLength(250)]
         public string Name { get; set; }
         [Required]
@@ -21,11 +20,11 @@ namespace Project_TTCM.Datas
         public string Password { get; set; }
         [Required,MaxLength(150)] 
         public string Email { get; set; }
-        [Required, MaxLength(50)]
+        [ MaxLength(50)]
         public string Phone { get; set; }
-        [Required, MaxLength(150)]
+        [ MaxLength(150)]
         public string Address { get; set; }
-        public DateTime Created_Date  { get; set; }
+        public DateTime Created_Date { get; set; } = DateTime.Now;
         [DefaultValue(0)]
         public byte IsDelete { get; set; }
         [DefaultValue(1)]

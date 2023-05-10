@@ -7,10 +7,12 @@ using System.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Project_TTCM.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -37,9 +39,10 @@ namespace Project_TTCM.Controllers
             }
             return Ok(Product);
         }
+        
 
         [HttpPost]
-        public IActionResult CreateProduct(ProductModel productModel)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductModel productModel)
         {
             try
             {
@@ -48,20 +51,27 @@ namespace Project_TTCM.Controllers
                     Name = productModel.Name,
                     Description = productModel.Description,
                     Notes = productModel.Notes,
-                    Images = productModel.Images,
                     IdCategory = productModel.IdCategory,
-                    Content = productModel.Content,
                     Price = productModel.Price,
                     Quatity = productModel.Quatity,
-                    SLUG = productModel.SLUG,
-                    META_TITLE = productModel.META_TITLE,
-                    META_DESCRIPTION = productModel.META_DESCRIPTION,
-                    META_KEYWORD = productModel.META_KEYWORD,
-                    CREATED_DATE = DateTime.Now,
-                    CREATED_BY = productModel.CREATED_BY,
                     ISDELETE = productModel.ISDELETE,
                     ISACTIVE = productModel.ISACTIVE,
                 };
+                if (productModel.fileImages.Length > 0)
+                {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", productModel.fileImages.FileName);
+                  
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await productModel.fileImages.CopyToAsync(stream);
+                    }
+                    product.Images = "/images/" + productModel.fileImages.FileName;
+
+                }
+                else
+                {
+                    product.Images = "";
+                }
                 _context.Add(product);
                 _context.SaveChanges();
                 return Ok(product);
@@ -84,17 +94,9 @@ namespace Project_TTCM.Controllers
                 product.Name = productModel.Name;
                 product.Description = productModel.Description;
                 product.Notes = productModel.Notes;
-                product.Images = productModel.Images;
                 product.IdCategory = productModel.IdCategory;
-                product.Content = productModel.Content;
                 product.Price = productModel.Price;
                 product.Quatity = productModel.Quatity;
-                product.SLUG = productModel.SLUG;
-                product.META_TITLE = productModel.META_TITLE;
-                product.META_DESCRIPTION = productModel.META_DESCRIPTION;
-                product.META_KEYWORD = productModel.META_KEYWORD;
-                product.CREATED_DATE = productModel.CREATED_DATE;
-                product.CREATED_BY = productModel.CREATED_BY;
                 product.ISDELETE = productModel.ISDELETE;
                 product.ISACTIVE = productModel.ISACTIVE;
                 _context.SaveChanges();

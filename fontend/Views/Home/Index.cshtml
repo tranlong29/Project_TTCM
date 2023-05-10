@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<fontend.Models.Product>
 @{
     ViewData["Title"] = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -71,62 +71,69 @@
                     <div class="carousel-inner text-center">
                         <div class="carousel-item active">
                             <div class="d-flex">
-                                <div class="col-3 ">
-                                    <img src="~/home/Pictures/trang-chu/product-1.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3 ">
-                                    <img src="~/home/Pictures/trang-chu/product-2.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3 ">
-                                    <img src="~/home/Pictures/trang-chu/product-3.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3 ">
-                                    <img src="~/home/Pictures/trang-chu/product-4.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Id <= 4)
+                                    {
+                                        <div class="col-3 ">
+                                            <img src="@ViewBag.Domain@item.Images" class=" img-fluid rounded-circle" width="250" height="210" alt="...">
+                                            <h6 class="text-uppercase mt-3">
+                                                <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                    @item.Name
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+
+                                }
+
+
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-flex">
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-1.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-2.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-3.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-4.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà Ô long</a></h6>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Id > 4 && item.Id <= 8)
+                                    {
+                                        <div class="col-3 ">
+                                            <img src="@ViewBag.Domain@item.Images" class=" img-fluid rounded-circle" width="250" height="210" alt="...">
+                                            <h6 class="text-uppercase mt-3">
+                                                <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                    @item.Name
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    }
+                                    else if (item.Id > 8)
+                                    {
+                                        break;
+                                    }
+
+                                }
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-flex">
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-1.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-2.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp nhị sen</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-3.png" class=" img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà Shan tuyết</a></h6>
-                                </div>
-                                <div class="col-3">
-                                    <img src="~/home/Pictures/trang-chu/product-4.png" class="img-fluid" width="210" alt="...">
-                                    <h6 class="text-uppercase mt-3"><a href="#" class="text-dark">Trà ướp bông sen</a></h6>
-                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Id > 8 && item.Id <= 12)
+                                    {
+                                        <div class="col-3 ">
+                                            <img src="@ViewBag.Domain@item.Images" class="img-fluid rounded-circle " width="250" alt="...">
+                                            <h6 class="text-uppercase mt-3">
+                                                <a class="text-dark" asp-controller="Product" asp-action="product" asp-route-id="@item.Id">
+                                                    @item.Name
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    }
+
+                                }
                             </div>
                         </div>
                     </div>

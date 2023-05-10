@@ -16,5 +16,6 @@ namespace Project_TTCM.Datas
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Orders_Detail> Orders_Details { get; set; }
 
+
     }
 }

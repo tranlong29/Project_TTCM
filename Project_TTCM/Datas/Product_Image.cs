@@ -11,7 +11,7 @@ namespace Project_TTCM.Datas
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
+        [MaxLength(500)]
         public string URLIMG { get; set; }
         public int IdProduct { get; set; }
         [ForeignKey("IdProduct")]

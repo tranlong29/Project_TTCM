@@ -14,7 +14,7 @@ namespace Project_TTCM.Datas
         
         public char IdOrder  { get; set; }
         [Required]
-        public DateTime Orderdate { get; set; }
+        public DateTime Orderdate { get; set; } = DateTime.Now;
 
         public int? IdCustomer { get; set; }
         [ForeignKey("IdCustomer")]
@@ -22,13 +22,13 @@ namespace Project_TTCM.Datas
         [Range(0, (double)decimal.MaxValue)]
         public decimal Total_Money { get; set; }
         public string Notes { get; set; }
-        [Required, MaxLength(250)]
+        [ MaxLength(250)]
         public string Name_Reciver { get; set; }
-        [Required, MaxLength(500)]
+        [ MaxLength(500)]
         public string Address { get; set; }
-        [Required, MaxLength(150)]
+        [MaxLength(150)]
         public string Email { get; set; }
-        [Required, MaxLength(50)]
+        [ MaxLength(50)]
         public string Phone { get; set; }
         [DefaultValue(0)]
         public byte IsDelete { get; set; }

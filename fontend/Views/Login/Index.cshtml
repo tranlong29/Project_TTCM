@@ -1,5 +1,6 @@
-﻿@model Login
+﻿@model fontend.Models.Login
 @{
+   
     Layout = null;
 }
 
@@ -34,8 +35,8 @@
                         <div class="card-3d-wrap mx-auto">
                             <div class="card-3d-wrapper">
                                 <div class="card-front" >
-                                    <div class="center-wrap" asp-action="LoginUser" asp-controller="Login">
-                                        <div class="section text-center" >
+                                    <div class="center-wrap" >
+                                        <form class="section text-center" asp-action="LoginUser" asp-controller="Login">
                                             <h4 class="mb-4 pb-3">Log In</h4>
                                             <div class="form-group">
                                                 <input type="text"
@@ -53,41 +54,50 @@
                                             </div>
                                             <input type="submit" class="btn btns mt-4" value="Login"/>
                                             <p class="mb-0 mt-4 text-center">
-                                                @Html.Raw(@ViewBag.Message)
+                                                @TempData["Message"]
                                             </p>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="card-back">
                                     <div class="center-wrap">
-                                        <div class="section text-center">
+                                        <form class="section text-center" asp-action="Register" asp-controller="Login">
                                             <h4 class="mb-3 pb-3">Sign Up</h4>
                                             <div class="form-group">
                                                 <input type="text"
+                                                       asp-for="Username"
                                                        class="form-style"
-                                                       placeholder="Full Name" />
+                                                       placeholder="UserName" />
                                                 <i class="input-icon uil uil-user"></i>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <input type="tel"
+                                                       asp-for="Phone"
                                                        class="form-style"
                                                        placeholder="Phone Number" />
                                                 <i class="input-icon uil uil-phone"></i>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <input type="email"
+                                                    asp-for = "Email"
                                                        class="form-style"
                                                        placeholder="Email" />
                                                 <i class="input-icon uil uil-at"></i>
                                             </div>
                                             <div class="form-group mt-2">
                                                 <input type="password"
+                                                    asp-for="Password"
                                                        class="form-style"
                                                        placeholder="Password" />
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
-                                            <a href="#" class="btn btns mt-4">Register</a>
-                                        </div>
+                                            <input type="submit" class="btn btns mt-4" value="Register" />
+                                            <p class="mb-0 mt-4 text-center">
+                                                @TempData["posted"]
+                                            </p>
+                                        </form>
+                                        
+
                                     </div>
                                 </div>
                             </div>

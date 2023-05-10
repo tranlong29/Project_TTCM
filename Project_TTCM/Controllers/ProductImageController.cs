@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_TTCM.Datas;
 using Project_TTCM.Models;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Project_TTCM.Controllers
@@ -37,16 +39,34 @@ namespace Project_TTCM.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(ProductImgDTO product_ImgModel)
+        public async Task<IActionResult> CreateProductAsync([FromForm] ProductImgDTO product_ImgModel, IFormFile[] formFiles)
         {
             try
             {
+                string pictures = "";
                 var prodcut_Img = new Product_Image
                 {
                     Name = product_ImgModel.Name,
-                    URLIMG = product_ImgModel.URLIMG,
                     IdProduct = product_ImgModel.IdProduct,
                 };
+                if (formFiles.Length > 0)
+                {
+                    foreach (var file in formFiles)
+                    {
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", file.FileName);
+                        using (var stream = System.IO.File.Create(path))
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+                        pictures += "/images/" + file.FileName + ";";
+                    }
+
+                    prodcut_Img.URLIMG = pictures;
+                }
+                else
+                {
+                    prodcut_Img.URLIMG = "";
+                }
                 _context.Add(prodcut_Img);
                 _context.SaveChanges();
                 return Ok(prodcut_Img);
@@ -67,10 +87,9 @@ namespace Project_TTCM.Controllers
                     return NotFound();
                 }
                 prodcut_Img.Name = product_ImgModel.Name;
-                prodcut_Img.URLIMG = product_ImgModel.URLIMG;
                 prodcut_Img.IdProduct = product_ImgModel.IdProduct;
-                
-                
+
+
 
                 _context.SaveChanges();
                 return Ok(prodcut_Img);

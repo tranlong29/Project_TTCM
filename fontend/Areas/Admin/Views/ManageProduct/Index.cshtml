@@ -1,0 +1,190 @@
+﻿@model IEnumerable<fontend.Areas.Admin.Models.Product>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main class="app-content">
+    <div class="app-title">
+        <ul class="app-breadcrumb breadcrumb side">
+            <li class="breadcrumb-item active"><a href="#"><b>Danh sách sản phẩm</b></a></li>
+        </ul>
+        <div class="nots bg-success">@TempData["msg"]</div>
+        <div id="clock"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="row element-button">
+                        <div class="col-sm-2">
+
+                            <a class="btn btn-add btn-sm" href="~/Admin/ManageProduct/Create" title="Thêm">
+                                <i class="fas fa-plus"></i>
+                                Tạo mới sản phẩm
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm nhap-tu-file"  title="Nhập" onclick="myFunction(this)">
+                                <i class="fas fa-file-upload"></i> Tải từ file
+                            </a>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm print-file"  title="In" onclick="myApp.printTable()">
+                                <i class="fas fa-print"></i> In dữ liệu
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm print-file js-textareacopybtn"  title="Sao chép">
+                                <i class="fas fa-copy"></i> Sao chép
+                            </a>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm pdf-file"  title="In" onclick="myFunction(this)">
+                                <i class="fas fa-file-pdf"></i> Xuất PDF
+                            </a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm"  title="Xóa" onclick="myFunction(this)">
+                                <i class="fas fa-trash-alt"></i> Xóa tất cả
+                            </a>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th width="10"><input type="checkbox" id="all"></th>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
+                                <th>Số lượng</th>
+                                <th>Tình trạng</th>
+                                <th>Giá tiền</th>
+                                <th>Danh mục</th>
+                                <th>Chức năng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                <td width="10"><input type="checkbox" name="check1" value="1"></td>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                    <td><img src="@ViewBag.Domain@item.Images" alt="" width="100px;"></td>
+                                <td>@item.Quatity</td>
+                                <td><span class="badge bg-success">@((@item.Quatity >= 0)?"Còn hàng":"Hết hàng")</span></td>
+                                <td>@item.Price VND</td>
+                                <td>@item.CategoryName</td>
+                                <td>
+                                        <a class="btn btn-primary btn-sm trash" onclick="return confirm('Bạn chắc chắn muốn xóa!')" asp-area="Admin" asp-controller="ManageProduct" asp-action="DeleteProduct" asp-route-id="@item.Id" title="Xóa">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                        <a class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp" data-toggle="modal" asp-route-id="@item.Id"
+                                            data-target="#ModalUP">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <form class="modal-body" asp-area="Admin" asp-controller="ManageProduct" asp-action="EditCategory" >
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <h5 class="mt-2">
+                            <span class="thong-tin-thanh-toan">
+                            Chỉnh sửa thông tin sản phẩm cơ bản
+                            </span>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label  class="control-label">Tên sản phẩm</label>
+                        <input class="form-control" type="text" required value="">
+                    </div>
+                    <div class="form-group  col-md-6">
+                        <label class="control-label">Số lượng</label>
+                        <input class="form-control" type="number" required value="20">
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                        <select class="form-control" id="exampleSelect1">
+                            <option>Còn hàng</option>
+                            <option>Hết hàng</option>
+                            <option>Đang nhập hàng</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Giá bán</label>
+                        <input class="form-control" type="text" value="5.600.000">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleSelect1" class="control-label">Danh mục</label>
+                            <select class="form-control" asp-items="@ViewBag.CategoryId">
+                                <option>-- Chọn danh mục --</option>
+                            </select>
+                    </div>
+                </div>
+                <BR>
+                <a href="#" style="float: right; font-weight: 600;color: #ea0000;">Chỉnh sửa sản phẩm nâng cao</a>
+                <BR>
+                <BR>
+                <button class="btn btn-save" type="button">Lưu lại</button>
+                <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                <BR>
+            </form>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function deleteRow(r) {
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("myTable").deleteRow(i);
+    }
+    jQuery(function () {
+        jQuery(".trash").click(function () {
+            swal({
+                title: "Cảnh báo",
+                text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
+                buttons: ["Hủy bỏ", "Đồng ý"],
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Đã xóa thành công.!", {
+
+                        });
+                    }
+                });
+        });
+    });
+    oTable = $('#sampleTable').dataTable();
+    $('#all').click(function (e) {
+        $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
+        e.stopImmediatePropagation();
+    });
+</script>

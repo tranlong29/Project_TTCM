@@ -14,6 +14,8 @@ namespace fontend.Models
         public string Images { get; set; }
         public decimal Price { get; set; }
         public int Quatity { get; set; }
-       
+        public int? IdCategory { get; set; }
+        public string Content { get; set; }
+
     }
 }

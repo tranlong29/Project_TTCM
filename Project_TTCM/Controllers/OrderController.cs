@@ -75,7 +75,6 @@ namespace Project_TTCM.Controllers
                     return NotFound();
                 }
                 order.IdOrder = orderDTO.IdOrder;
-                order.Orderdate = orderDTO.Orderdate;
                 order.IdCustomer = orderDTO.IdCustomer;
                 order.Total_Money = orderDTO.Total_Money;
                 order.Notes = orderDTO.Notes;
